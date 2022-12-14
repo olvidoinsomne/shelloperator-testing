@@ -14,7 +14,7 @@ kubernetes:
   executeHookOnSynchronization: false
   executeHookOnEvent: ["Added","Modified", "Deleted"]
 - name: monitor-master
-  kind: "clusterroles,componentstatuses,configmaps,cronjobs,daemonsets,deployments,endpoints,events,ingresses,limitranges,namespaces,nodes,persistentvolumeclaims,persistentvolumes,pods,podtemplates,replicasets,replicationcontrollers,resourcequotas,rolebindings,roles,secrets,serviceaccounts,servicemonitors,services" 
+  kind: ["clusterroles,componentstatuses,configmaps,cronjobs,daemonsets,deployments,endpoints,events,ingresses,limitranges,namespaces,nodes,persistentvolumeclaims,persistentvolumes,pods,podtemplates,replicasets,replicationcontrollers,resourcequotas,rolebindings,roles,secrets,serviceaccounts,servicemonitors,services"]
   jqFilter: '.status'
   includeSnapshotsFrom: ["configmap-content"] 
 EOF
