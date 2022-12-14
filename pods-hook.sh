@@ -4,9 +4,20 @@ if [[ $1 == "--config" ]] ; then
   cat <<EOF
 configVersion: v1
 kubernetes:
-- apiVersion: v1
+- name: periodic-checking
+  crontab: "*/5 * * * *"
+  includeSnapshotsFrom: ["monitor-pods", "configmap-content"]
+kubernetes:
+- name: configmap-content
+  kind: ConfigMap
+  nameSelector:
+    matchNames: ["jonesweb-configs"]
+  executeHookOnSynchronization: false
+  executeHookOnEvent: ["Added","Modified", "Deleted"]
+- name: monitor-pods
   kind: Pod
-  executeHookOnEvent: ["Added"]
+  jqFilter: '.status'
+  includeSnapshotsFrom: ["configmap-content"] 
 EOF
 else
   podName=$(jq -r .[0].object.metadata.name $BINDING_CONTEXT_PATH)
