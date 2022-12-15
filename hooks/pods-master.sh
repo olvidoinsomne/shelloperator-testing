@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-
   cat <<EOF
 configVersion: v1
 kubernetes:

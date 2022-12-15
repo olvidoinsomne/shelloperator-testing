@@ -1,5 +1,2 @@
-#adding unneccesary comment
-
 FROM flant/shell-operator:latest
-ADD pods-master.sh /hooks
-
+COPY hooks /hooks
