@@ -10,7 +10,7 @@ kubernetes:
   kind: ConfigMap
   nameSelector:
     matchNames: ["jonesweb-configs"]
-  executeHookOnSynchronization: false
+  executeHookOnSynchronization: true
   executeHookOnEvent: ["Added","Modified", "Deleted"]
 - name: monitor-pods
   kind: Pod

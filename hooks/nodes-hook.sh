@@ -2,7 +2,7 @@
   cat <<EOF
 configVersion: v1
 kubernetes:
-- name: periodic-checking
+- name: node-checking
   crontab: "*/5 * * * *"
   includeSnapshotsFrom: ["monitor-master", "configmap-content"]
 kubernetes:
@@ -10,10 +10,10 @@ kubernetes:
   kind: ConfigMap
   nameSelector:
     matchNames: ["jonesweb-configs"]
-  executeHookOnSynchronization: false
+  executeHookOnSynchronization: true
   executeHookOnEvent: ["Added","Modified", "Deleted"]
 - name: monitor-master
-  kind: ["clusterroles,componentstatuses,configmaps,cronjobs,daemonsets,deployments,endpoints,events,ingresses,limitranges,namespaces,nodes,persistentvolumeclaims,persistentvolumes,pods,podtemplates,replicasets,replicationcontrollers,resourcequotas,rolebindings,roles,secrets,serviceaccounts,servicemonitors,services"]
+  kind: ["nodes"]
   jqFilter: '.status'
   includeSnapshotsFrom: ["configmap-content"] 
 EOF
