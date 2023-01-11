@@ -9,4 +9,4 @@ kubernetes:
 - name: monitor-pods
   kind: Pod
   jqFilter: '.status'
-EOF
+EOF 
