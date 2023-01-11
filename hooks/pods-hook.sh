@@ -4,16 +4,9 @@ configVersion: v1
 kubernetes:
 - name: periodic-checking
   crontab: "*/5 * * * *"
-  includeSnapshotsFrom: ["monitor-pods", "configmap-content"]
+  includeSnapshotsFrom: ["monitor-pods"]
 kubernetes:
-- name: configmap-content
-  kind: ConfigMap
-  nameSelector:
-    matchNames: ["jonesweb-configs"]
-  executeHookOnSynchronization: true
-  executeHookOnEvent: ["Added","Modified", "Deleted"]
 - name: monitor-pods
   kind: Pod
   jqFilter: '.status'
-  includeSnapshotsFrom: ["configmap-content"] 
 EOF
