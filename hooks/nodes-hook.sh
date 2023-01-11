@@ -4,9 +4,9 @@ configVersion: v1
 kubernetes:
 - name: node-checking
   crontab: "*/5 * * * *"
-  includeSnapshotsFrom: ["monitor-master"]
+  includeSnapshotsFrom: ["monitor-nodes"]
 kubernetes:
-- name: monitor-master
+- name: monitor-nodes
   kind: ["nodes"]
   jqFilter: '.status'
 EOF
